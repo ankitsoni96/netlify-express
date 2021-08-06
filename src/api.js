@@ -10,6 +10,12 @@ router.get('/',(req,res)=>{
     })
 })
 
+router.get('/test',(req,res)=>{
+    res.send({
+        message:"Working"
+    })
+})
+
 app.use('/.netlify/functions/api',router)
 
 
