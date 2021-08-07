@@ -3,7 +3,6 @@ const app = express();
 const serverless = require('serverless-http')
 const router = express.Router()
 
-
 router.get('/',(req,res)=>{
     res.json({
         message:"Working"
@@ -11,8 +10,8 @@ router.get('/',(req,res)=>{
 })
 
 router.get('/test',(req,res)=>{
-    res.send({
-        message:"Working"
+    db.select('students','*').then((res1)=>{
+        res.send(res1)
     })
 })
 
