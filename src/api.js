@@ -2,6 +2,7 @@ const express = require('express')
 const app = express();
 const serverless = require('serverless-http')
 const router = express.Router()
+const user = require('./user')
 
 router.get('/',(req,res)=>{
     res.json({
@@ -10,12 +11,12 @@ router.get('/',(req,res)=>{
 })
 
 router.get('/test',(req,res)=>{
-    db.select('students','*').then((res1)=>{
         res.send(res1)
-    })
 })
 
 app.use('/.netlify/functions/api',router)
+app.use('/.netlify/functions/user',user)
+
 
 
 module.exports.handler = serverless(app)
